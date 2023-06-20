@@ -18,9 +18,13 @@ interface BigDataCloudResponseData {
     }
     
     async getCity(): Promise<string> {
-        const resonse = await fetch(this.API_URL);
-        const result: BigDataCloudResponseData = await resonse.json();
-        return result.city;
+        try{
+            const resonse = await fetch(this.API_URL);
+            const result: BigDataCloudResponseData = await resonse.json();
+            return result.city;
+        }catch (e) {
+            throw new Error("Oops! something went wrong");
+        }
     }
 
 }

@@ -1,32 +1,10 @@
 import * as Location from 'expo-location';
 import { FC, useEffect, useState } from "react";
 import { StyleSheet, View, Text } from "react-native";
-
-// interface ILocation {
-//     timestamp: number,
-//     mocked : string,
-//     coords : 
-// }
+import { useLocation } from '../hooks/locationHooks';
 
 export const LocationInfoBar: FC = () => {
-    const [location, setLocation] = useState<Location.LocationObject | null>(null);
-    const [errorMsg, setErrorMsg] = useState <string | null> (null);
-
-    useEffect(() => {
-        (async () => {
-        
-        let { status } = await Location.requestForegroundPermissionsAsync();
-        if (status !== 'granted') {
-            setErrorMsg('Permission to access location was denied');
-            return;
-        }
-
-        let location : Location.LocationObject = await Location.getCurrentPositionAsync({});
-        console.log(location);
-        
-        setLocation(location);
-        })();
-    }, []);
+    const { location, errorMsg } = useLocation();
 
     let text = 'Waiting..';
     if (errorMsg) {
