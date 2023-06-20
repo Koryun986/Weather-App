@@ -2,15 +2,9 @@ import { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import AppLoading from 'expo-app-loading';
-import * as Font from 'expo-font';
 import { fonts } from './src/helpers/StyleConstants';
-
-const fetchFonts = () =>
-  Font.loadAsync({
-    "Corporate S Regular" : require('./assets/fonts/Corporate_S_Regular.otf'),
-    "Corporate S Light" : require('./assets/fonts/Corporate_S_Light.otf'),
-    "Corporate S Bold" : require('./assets/fonts/Corporate_S_Bold.otf'),
-  });
+import { useFonts } from './src/hooks/styleHooks';
+import { LocationInfoBar } from './src/components/LocationInfoBar';
 
 export default function App() {
   const [dataLoaded, setDataLoaded] = useState(false);
@@ -18,7 +12,7 @@ export default function App() {
   if (!dataLoaded) {
     return (
       <AppLoading
-        startAsync={fetchFonts}
+        startAsync={useFonts}
         onFinish={() => setDataLoaded(true)}
         onError={(err) => console.log(err)}
       />
@@ -27,7 +21,8 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text>Hello</Text>
+      <LocationInfoBar />
+      <Text style={fonts.regularFont}>Hello</Text>
       {/* <StatusBar style="auto" /> */}
     </View>
   );
@@ -35,7 +30,6 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    ... fonts.regularFont,
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',

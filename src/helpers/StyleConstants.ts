@@ -9,7 +9,8 @@ export const COLOR_PRIMARY : string = colorScheme === "light" ? COLOR_PRIMARY_LI
 
 export const fonts = {
     regularFont : {
-        fontFamily : "Corporate S Regular"
+        fontFamily : "Corporate S Regular",
+    
     },
     lightFont : {
         fontFamily : "Corporate S Light"
