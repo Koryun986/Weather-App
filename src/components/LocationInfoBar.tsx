@@ -4,11 +4,11 @@ import { StyleSheet, View, Text } from "react-native";
 import { useLocation } from '../hooks/locationHooks';
 
 export const LocationInfoBar: FC = () => {
-    const { location, errorMsg } = useLocation();
+    const { location, error } = useLocation();
 
     let text = 'Waiting..';
-    if (errorMsg) {
-        text = errorMsg;
+    if (error) {
+        text = error;
     } else if (location) {
         text = JSON.stringify(location);
     }

@@ -5,7 +5,7 @@ import { GeoCode } from "../helpers/API/GeoCodeApi";
 
 export const useLocation = () => {
     const [location, setLocation] = useState<string | null>(null);
-    const [errorMsg, setErrorMsg] = useState <any> (null);
+    const [error, seterror] = useState <any> (null);
     
     useEffect(() => {
         getLatLong();
@@ -20,7 +20,7 @@ export const useLocation = () => {
             let location : Location.LocationObject = await Location.getCurrentPositionAsync({});
             getCityfromCoordinates(location.coords);
         }catch (e) {
-            setErrorMsg(e);
+            seterror(e);
         }
     }
 
@@ -30,10 +30,9 @@ export const useLocation = () => {
             const city = await bigDataCloudApi.getCity();
             setLocation(city);
         } catch(e) {
-            setErrorMsg(e);
+            seterror(e);
         }
     }
 
-
-    return { location, errorMsg };
+    return { location, error };
 }
