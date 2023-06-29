@@ -1,3 +1,4 @@
+import { DataFetcher } from "../DataFetcher";
 import { IGecoCodeApi, GeoCode } from "./GeoCodeApi";
 
 interface BigDataCloudResponseData {
@@ -18,13 +19,8 @@ interface BigDataCloudResponseData {
     }
     
     async getCity(): Promise<string> {
-        try{
-            const resonse = await fetch(this.API_URL);
-            const result: BigDataCloudResponseData = await resonse.json();
-            return result.city;
-        }catch (e) {
-            throw new Error("Oops! something went wrong");
-        }
+        const result: BigDataCloudResponseData = await DataFetcher.getData(this.API_URL);
+        return result.city;
     }
 
 }
