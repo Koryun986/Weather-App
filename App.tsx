@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import AppLoading from 'expo-app-loading';
-import { fonts } from './src/helpers/StyleConstants';
+import { COLOR_PRIMARY, fonts } from './src/helpers/styles/StyleConstants';
 import { useFonts } from './src/hooks/styleHooks';
 import { LocationInfoBar } from './src/components/LocationInfoBar';
 
@@ -31,7 +31,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: COLOR_PRIMARY,
     alignItems: 'center',
     justifyContent: 'center',
   },
