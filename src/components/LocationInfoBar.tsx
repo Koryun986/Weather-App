@@ -2,10 +2,12 @@ import * as Location from 'expo-location';
 import { FC, useEffect, useState } from "react";
 import { StyleSheet, View, Text } from "react-native";
 import { useLocation } from '../hooks/locationHooks';
-import { COLOR_SECONDARY } from '../helpers/styles/StyleConstants';
+import { COLOR_SECONDARY, fonts } from '../helpers/styles/StyleConstants';
+import { useDate } from '../hooks/DateHooks';
 
 export const LocationInfoBar: FC = () => {
     const { location, error } = useLocation();
+    const { date } = useDate();
 
     let city = 'Waiting..';
     if (error) {
@@ -15,15 +17,24 @@ export const LocationInfoBar: FC = () => {
         city = city.replace(/['".*+?^${}()|[\]\\]/g, "");
     }
     return (
-        <View>
+        <View style={styles.container}>
             <Text style={styles.city} > { city }</Text>
+            <Text style={styles.date} > { date }</Text>
         </View>
     );
 };
 
 const styles = StyleSheet.create({
-    city : {
+    container: {
+        alignItems: "center",
+    },
+    city: {
         color: COLOR_SECONDARY,
-        fontSize: 20,
+        ...fonts.lightFont,
+        fontSize: 25,
+    },
+    date: {
+        color: COLOR_SECONDARY,
+            fontWeight: "bold",
     }
 })

@@ -22,7 +22,6 @@ export default function App() {
   return (
     <View style={styles.container}>
       <LocationInfoBar />
-      <Text style={fonts.regularFont}>Hello</Text>
       {/* <StatusBar style="auto" /> */}
     </View>
   );
