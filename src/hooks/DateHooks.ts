@@ -11,7 +11,6 @@ export const useDate = () => {
     const minutes = formateNumberToString(currentDate.getMinutes())
     const currentTime = `${hours} : ${minutes}`;
 
-
     const weekDay = Days[currentDate.getDay() - 1];
     
     const date = `${weekDay} ${currentTime}`
