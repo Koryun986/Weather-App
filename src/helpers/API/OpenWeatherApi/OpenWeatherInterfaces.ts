@@ -1,6 +1,6 @@
-import { CurrenctWeather, Forecast } from "../WeatherApi"
+import { CurrentWeather, Forecast } from "../WeatherApi"
 
-export interface WeatherData extends CurrenctWeather {
+export interface WeatherData extends CurrentWeather {
     weather: Weather[]
     main: Main
     visibility: number

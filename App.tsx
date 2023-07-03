@@ -5,6 +5,8 @@ import AppLoading from 'expo-app-loading';
 import { COLOR_PRIMARY, fonts } from './src/helpers/styles/StyleConstants';
 import { useFonts } from './src/hooks/styleHooks';
 import { LocationInfoBar } from './src/components/LocationInfoBar';
+import { Provider } from 'react-redux';
+import { store } from './src/store/store';
 
 export default function App() {
   const [dataLoaded, setDataLoaded] = useState(false);
@@ -20,10 +22,13 @@ export default function App() {
   }
 
   return (
-    <View style={styles.container}>
-      <LocationInfoBar />
-      {/* <StatusBar style="auto" /> */}
-    </View>
+    <Provider store={store}>
+      <View style={styles.container}>
+        <LocationInfoBar />
+
+        {/* <StatusBar style="auto" /> */}
+      </View>
+    </Provider>
   );
 } 
 

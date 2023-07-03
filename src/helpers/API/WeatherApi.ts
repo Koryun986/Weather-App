@@ -1,16 +1,16 @@
 export interface IWeatherApi {
-    getCurrentWeather (): Promise<CurrenctWeather>,
+    getCurrentWeather (): Promise<CurrentWeather>,
     getForecast (): Promise<Forecast>,
 }
 
-export interface CurrenctWeather {
+export interface CurrentWeather {
     weather: Weather[]
     main: Main
     visibility: number
 }
 
 export interface Forecast {
-    list: CurrenctWeather[]
+    list: CurrentWeather[]
     city: City
 }
 

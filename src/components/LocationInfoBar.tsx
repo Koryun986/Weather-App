@@ -1,21 +1,22 @@
 import * as Location from 'expo-location';
 import { FC, useEffect, useState } from "react";
 import { StyleSheet, View, Text } from "react-native";
+import { useSelector } from "react-redux"
 import { useLocation } from '../hooks/locationHooks';
 import { COLOR_SECONDARY, fonts } from '../helpers/styles/StyleConstants';
 import { useDate } from '../hooks/DateHooks';
+import { IWeatherState } from '../store/weatherSlice';
+import { WEATHER_SLICER } from '../store/Constants';
+import { RootState } from '../store/store';
 
 export const LocationInfoBar: FC = () => {
-    const { location, error } = useLocation();
+    const {  error } = useLocation();
     const { date } = useDate();
-
-    let city = 'Waiting..';
+    const city = useSelector<RootState, string | null>(state => state.weather.city);
+    
     if (error) {
-        city = error;
-    } else if (location) {
-        city = JSON.stringify(location);
-        city = city.replace(/['".*+?^${}()|[\]\\]/g, "");
-    }
+        
+    } 
     return (
         <View style={styles.container}>
             <Text style={styles.city} > { city }</Text>
