@@ -1,7 +1,7 @@
 import { DataFetcher } from "../DataFetcher";
 import { IGecoCodeApi, GeoCode } from "./GeoCodeApi";
 
-interface BigDataCloudResponseData {
+export interface BigDataCloudResponseData {
     city: string,
     continent: string,
     countryCode: string,

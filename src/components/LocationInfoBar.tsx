@@ -8,14 +8,18 @@ import { useDate } from '../hooks/DateHooks';
 import { IWeatherState } from '../store/weatherSlice';
 import { WEATHER_SLICER } from '../store/Constants';
 import { RootState } from '../store/store';
+import { useGetCityFromCoordinatesQuery } from '../store/APIs/CoordinatesApi';
 
 export const LocationInfoBar: FC = () => {
-    const {  error } = useLocation();
+    const [error, setError] = useState<any>(null);
+    const { location, error : coordsError } = useLocation();
     const { date } = useDate();
-    const city = useSelector<RootState, string | null>(state => state.weather.city);
+    const { data, error: cityError, isLoading } = useGetCityFromCoordinatesQuery(location);
+    const city = data?.city;
+    // const city = useSelector<RootState, string | null>(state => state.weather.city);
     
-    if (error) {
-        
+    if (coordsError || cityError) {
+        setError(coordsError || cityError);
     } 
     return (
         <View style={styles.container}>
