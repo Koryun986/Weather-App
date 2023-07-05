@@ -1,10 +1,6 @@
-import { BigDataCloudApi } from './../helpers/API/BigDataCloudApi';
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux"
 import * as Location from 'expo-location';
 import { GeoCode } from "../helpers/API/GeoCodeApi";
-import { setCity } from '../store/weatherSlice';
-import { useGetCityFromCoordinatesQuery } from '../store/APIs/CoordinatesApi';
 
 export const useLocation = () => {
     const [location, setLocaiton] = useState<GeoCode | null>(null);
