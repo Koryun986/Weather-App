@@ -7,6 +7,7 @@ import { useFonts } from './src/hooks/styleHooks';
 import { LocationInfoBar } from './src/components/LocationInfoBar';
 import { Provider } from 'react-redux';
 import { store } from './src/store/store';
+import { WeatherIcon } from './src/components/WeatherIcon';
 
 export default function App() {
   const [dataLoaded, setDataLoaded] = useState(false);
@@ -25,8 +26,8 @@ export default function App() {
     <Provider store={store}>
       <View style={styles.container}>
         <LocationInfoBar />
-
-        {/* <StatusBar style="auto" /> */}
+        <WeatherIcon />
+        <StatusBar style="auto" />
       </View>
     </Provider>
   );
@@ -37,6 +38,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: COLOR_PRIMARY,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-around',
   },
 });
