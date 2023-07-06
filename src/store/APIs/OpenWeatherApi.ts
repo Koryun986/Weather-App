@@ -9,7 +9,7 @@ export const OpenWeatherApi = createApi({
     reducerPath: OPEN_WEATHER_API_REDUCER_PATH,
     baseQuery: fetchBaseQuery({baseUrl: "https://api.openweathermap.org/data/2.5/"}),
     endpoints: (builder) => ({
-        getCurrentWeather: builder.query<WeatherData, string>({
+        getCurrentWeather: builder.query<WeatherData, string | null>({
             query: (city) => `weather?q=${city}&appid=${OPEN_WEATHER_API.API_KEY}`
         }),
         getForecast: builder.query<ForecastData, string>({

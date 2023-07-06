@@ -12,12 +12,14 @@ import { useGetCityFromCoordinatesQuery } from '../store/APIs/CoordinatesApi';
 import { useDispatch } from 'react-redux';
 
 export const LocationInfoBar: FC = () => {
+    const dispatch = useDispatch();
     const { location, error : coordsError } = useLocation();
     const { date } = useDate();
     const { data, error: cityError, isLoading } = useGetCityFromCoordinatesQuery(location);
     const city = data?.city;
     
-    if (coordsError || cityError) {
+    if (!(coordsError || cityError)) {
+        dispatch(setCity(city));
     } 
 
     return (
@@ -35,7 +37,7 @@ const styles = StyleSheet.create({
     city: {
         color: COLOR_SECONDARY,
         ...fonts.lightFont,
-        fontSize: 25,
+        fontSize: 35,
     },
     date: {
         color: COLOR_SECONDARY,

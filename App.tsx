@@ -8,6 +8,7 @@ import { LocationInfoBar } from './src/components/LocationInfoBar';
 import { Provider } from 'react-redux';
 import { store } from './src/store/store';
 import { WeatherIcon } from './src/components/WeatherIcon';
+import { WeatherInfo } from './src/components/WeatherInfo';
 
 export default function App() {
   const [dataLoaded, setDataLoaded] = useState(false);
@@ -27,6 +28,7 @@ export default function App() {
       <View style={styles.container}>
         <LocationInfoBar />
         <WeatherIcon />
+        <WeatherInfo />
         <StatusBar style="auto" />
       </View>
     </Provider>
