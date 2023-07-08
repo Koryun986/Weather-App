@@ -4,11 +4,9 @@ import { COLOR_SECONDARY, TRANSPARENT_COLOR_SECONDARY } from "../helpers/styles/
 import { useGetCurrentWeatherQuery } from "../store/APIs/OpenWeatherApi";
 import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
-import { CurrentWeather } from "../helpers/API/WeatherApi";
-import { WeatherData } from "../helpers/API/OpenWeatherApi/OpenWeatherInterfaces";
-import { useDate } from "../hooks/DateHooks";
 import { useDispatch } from "react-redux";
 import { setCurrentWeather } from "../store/weatherSlice";
+import { Line } from "../helpers/styles/UI/Line";
 
 enum DayParts {
     MORNING = "MORNING",
@@ -47,6 +45,7 @@ export const WeatherInfo = () => {
                 <Text style={styles.weatherDegreeSymbol}>&deg;C</Text>
             </View>
             <Text style={styles.dayPart}>GOOD {dayPart}</Text>
+            <Line lineType="horizontal" />
         </View>)  
 };
 

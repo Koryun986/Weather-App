@@ -7,6 +7,8 @@ export interface CurrentWeather {
     weather: Weather[]
     main: Main
     visibility: number
+    sys: Sys
+    wind: Wind
 }
 
 export interface Forecast {
@@ -16,6 +18,16 @@ export interface Forecast {
 
 interface Weather {
     main: string
+}
+
+interface Sys {
+    sunrise: number
+    sunset: number
+}
+
+interface Wind {
+    speed: number
+    deg: number
 }
 
 interface Main {

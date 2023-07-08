@@ -9,6 +9,8 @@ import { Provider } from 'react-redux';
 import { store } from './src/store/store';
 import { WeatherIcon } from './src/components/WeatherIcon';
 import { WeatherInfo } from './src/components/WeatherInfo';
+import { WeatherOtherInfo } from './src/components/WeatherOtherInfo';
+import { NavigationBar } from './src/components/NavigationBar';
 
 export default function App() {
   const [dataLoaded, setDataLoaded] = useState(false);
@@ -26,9 +28,11 @@ export default function App() {
   return (
     <Provider store={store}>
       <View style={styles.container}>
+        <NavigationBar />
         <LocationInfoBar />
         <WeatherIcon />
         <WeatherInfo />
+        <WeatherOtherInfo />
         <StatusBar style="auto" />
       </View>
     </Provider>
